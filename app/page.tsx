@@ -1,5 +1,6 @@
 'use client'
 
+import CalculateReturnsForm from '@/components/Forms/CalculateReturnsForm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -54,10 +55,13 @@ const Home = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Mutual Fund Yield Comparison</h1>
+      <div className='flex justify-end ' >
+
+      <CalculateReturnsForm/>
+      </div>
 
       {/* Input Form */}
-      <div className="grid grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-2 gap-4">
         <div>
           <Label>Principal Amount</Label>
           <Input type="number" name="principal" value={formData.principal} onChange={handleInputChange} />
@@ -85,9 +89,9 @@ const Home = () => {
             <option value="yearly">Yearly</option>
           </Select>
         </div>
-      </div>
+      </div> */}
 
-      <Button onClick={calculateYields} className="mt-4">Compare Yields</Button>
+      {/* <Button onClick={calculateYields} className="mt-4">Compare Yields</Button> */}
 
       {/* Chart */}
       {graphData.length > 0 && (
