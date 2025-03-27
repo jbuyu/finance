@@ -23,14 +23,23 @@ export default function CalculateReturnsForm() {
   const {
     register,
     handleSubmit,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = (data) => console.log(data);
+  interface FormData {
+    principal_amount: number;
+    interest_1: number;
+    interest_2: number;
+    monthly_contributions: number;
+    investment_period: number;
+  }
+
+  const onSubmit = (data: FormData): void => console.log(data);
 
   return (
     <Dialog>
-      <DialogTrigger asChild> 
+      <DialogTrigger asChild>
         <Button variant="outline">Calculate Return</Button>
       </DialogTrigger>
       <DialogContent className="">
@@ -40,7 +49,7 @@ export default function CalculateReturnsForm() {
             Calculate the return on your premiumns
           </DialogDescription>
         </DialogHeader>
-        <form className="grid gap-4 py-4   " onSubmit={handleSubmit(onSubmit)}>
+        <form className="grid gap-4 py-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex justify-between items-center">
             <Label htmlFor="name" className="text-right w-2/3 flex ">
               Principle Amount
@@ -110,8 +119,7 @@ export default function CalculateReturnsForm() {
                 <SelectItem value="system">yearly</SelectItem>
               </SelectContent>
             </Select>
-            </div>
-
+          </div>
 
           <DialogFooter>
             <Button type="submit">Calculate</Button>
